@@ -4,25 +4,28 @@ import Link from 'next/link';
 
 export default function Navbar() {
   return (
-    <nav className="dark:bg-gray-800 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="sticky top-0 z-50 backdrop-blur-sm bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800">
+      <div className="max-w-content">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 flex items-center">
-              <span className="text-2xl font-bold dark:text-indigo-400">CrowdFunded</span>
+              <span className="text-2xl font-bold bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">CrowdFunded</span>
             </Link>
           </div>
-          <div className="flex items-center space-x-4">
-            <Link href="/" className="dark:text-gray-300 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium">
+          <div className="flex items-center space-x-1 sm:space-x-2">
+            <Link href="/" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">
               Home
             </Link>
-            <Link href="/about" className="dark:text-gray-300 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium">
+            <Link href="/about" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">
               About
             </Link>
-            <Link href="/projects" className="dark:text-gray-300 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium">
+            <Link href="/projects" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">
               Projects
             </Link>
-            <Link href="/start" className="bg-indigo-600 text-white hover:bg-indigo-700 px-4 py-2 rounded-md text-sm font-medium">
+            <Link 
+              href="/start" 
+              className="ml-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white hover:from-indigo-600 hover:to-purple-700 px-4 py-2 rounded-md text-sm font-medium shadow-sm"
+            >
               Start a Project
             </Link>
           </div>

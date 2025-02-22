@@ -7,11 +7,13 @@ import { ThemeProvider } from "@/app/components/ThemeProvider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -25,11 +27,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen dark:bg-gray-900 dark:text-gray-100`}>
+    <html lang="en" suppressHydrationWarning>
+      <body 
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col`}
+      >
         <ThemeProvider>
           <Navbar />
-          <main>
+          <main className="flex-1">
             {children}
           </main>
         </ThemeProvider>
