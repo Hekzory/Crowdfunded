@@ -1,3 +1,8 @@
 {
-    "unstable": ["bare-node-builtins", "webgpu", "unsafe-proto"]
+    "unstable": ["bare-node-builtins", "unsafe-proto"],
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "incremental": true
+    }
 }
