@@ -28,41 +28,41 @@ export default function Home() {
       {/* Featured Projects Section */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Featured Projects</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">Featured Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Example Project Cards */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="h-48 bg-gray-200"></div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-700/20 overflow-hidden">
+              <div className="h-48 bg-gray-200 dark:bg-gray-700"></div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Eco-Friendly Water Bottle</h3>
-                <p className="text-gray-600 mb-4">Revolutionary design that helps reduce plastic waste</p>
+                <h3 className="text-xl font-semibold mb-2 dark:text-white">Eco-Friendly Water Bottle</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">Revolutionary design that helps reduce plastic waste</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-indigo-600 font-semibold">$12,450 raised</span>
-                  <span className="text-gray-500">15 days left</span>
+                  <span className="text-indigo-600 dark:text-indigo-400 font-semibold">$12,450 raised</span>
+                  <span className="text-gray-500 dark:text-gray-400">15 days left</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="h-48 bg-gray-200"></div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-700/20 overflow-hidden">
+              <div className="h-48 bg-gray-200 dark:bg-gray-700"></div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Smart Home Garden</h3>
-                <p className="text-gray-600 mb-4">Automated indoor garden for urban spaces</p>
+                <h3 className="text-xl font-semibold mb-2 dark:text-white">Smart Home Garden</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">Automated indoor garden for urban spaces</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-indigo-600 font-semibold">$28,750 raised</span>
-                  <span className="text-gray-500">8 days left</span>
+                  <span className="text-indigo-600 dark:text-indigo-400 font-semibold">$28,750 raised</span>
+                  <span className="text-gray-500 dark:text-gray-400">8 days left</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="h-48 bg-gray-200"></div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-700/20 overflow-hidden">
+              <div className="h-48 bg-gray-200 dark:bg-gray-700"></div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Educational VR Kit</h3>
-                <p className="text-gray-600 mb-4">Making learning fun and interactive</p>
+                <h3 className="text-xl font-semibold mb-2 dark:text-white">Educational VR Kit</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">Making learning fun and interactive</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-indigo-600 font-semibold">$45,890 raised</span>
-                  <span className="text-gray-500">21 days left</span>
+                  <span className="text-indigo-600 dark:text-indigo-400 font-semibold">$45,890 raised</span>
+                  <span className="text-gray-500 dark:text-gray-400">21 days left</span>
                 </div>
               </div>
             </div>
@@ -71,24 +71,24 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="bg-gray-100 py-16">
+      <section className="bg-gray-100 dark:bg-gray-800 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How It Works</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">How It Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">1</div>
-              <h3 className="text-xl font-semibold mb-2">Create Your Project</h3>
-              <p className="text-gray-600">Share your story, set your funding goal, and launch your campaign</p>
+              <div className="w-16 h-16 bg-indigo-600 dark:bg-indigo-500 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">1</div>
+              <h3 className="text-xl font-semibold mb-2 dark:text-white">Create Your Project</h3>
+              <p className="text-gray-600 dark:text-gray-300">Share your story, set your funding goal, and launch your campaign</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">2</div>
-              <h3 className="text-xl font-semibold mb-2">Spread the Word</h3>
-              <p className="text-gray-600">Share with friends, family, and our supportive community</p>
+              <div className="w-16 h-16 bg-indigo-600 dark:bg-indigo-500 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">2</div>
+              <h3 className="text-xl font-semibold mb-2 dark:text-white">Spread the Word</h3>
+              <p className="text-gray-600 dark:text-gray-300">Share with friends, family, and our supportive community</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">3</div>
-              <h3 className="text-xl font-semibold mb-2">Get Funded</h3>
-              <p className="text-gray-600">Receive funding and make your project a reality</p>
+              <div className="w-16 h-16 bg-indigo-600 dark:bg-indigo-500 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">3</div>
+              <h3 className="text-xl font-semibold mb-2 dark:text-white">Get Funded</h3>
+              <p className="text-gray-600 dark:text-gray-300">Receive funding and make your project a reality</p>
             </div>
           </div>
         </div>
