@@ -6,7 +6,7 @@ export default function About() {
         <div className="text-center">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">About CrowdFunded</h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            We're on a mission to help creative projects come to life. Our platform connects innovators with backers who believe in their ideas.
+            We&apos;re on a mission to help creative projects come to life. Our platform connects innovators with backers who believe in their ideas.
           </p>
         </div>
       </section>
@@ -21,7 +21,7 @@ export default function About() {
                 Founded in 2024, CrowdFunded was born from a simple idea: everyone should have the opportunity to bring their creative projects to life. We believe that great ideas can come from anywhere, and with the right support, they can become reality.
               </p>
               <p className="mb-4">
-                Our platform has helped thousands of creators launch their projects, ranging from innovative technology products to groundbreaking art installations. We're proud to be a catalyst for creativity and innovation.
+                Our platform has helped thousands of creators launch their projects, ranging from innovative technology products to groundbreaking art installations. We&apos;re proud to be a catalyst for creativity and innovation.
               </p>
               <p>
                 What sets us apart is our commitment to transparency, security, and community. We carefully review each project to ensure it meets our guidelines, while providing creators with the tools and support they need to succeed.
@@ -71,7 +71,7 @@ export default function About() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-indigo-600 dark:bg-indigo-500 rounded-lg shadow-xl text-white p-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
-          <p className="text-xl mb-6">Have questions? We'd love to hear from you.</p>
+          <p className="text-xl mb-6">Have questions? We&apos;d love to hear from you.</p>
           <button className="bg-white text-indigo-600 hover:bg-indigo-50 dark:hover:bg-white/90 px-8 py-3 rounded-full font-semibold">
             Contact Us
           </button>
