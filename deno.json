@@ -1,8 +1,4 @@
 {
-    "unstable": ["bare-node-builtins", "unsafe-proto"],
-    "compilerOptions": {
-        "target": "esnext",
-        "module": "esnext",
-        "incremental": true
-    }
+    "unstable": ["bare-node-builtins", "unsafe-proto"]
 }
+
