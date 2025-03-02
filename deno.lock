@@ -5,7 +5,7 @@
     "npm:@tailwindcss/forms@~0.5.10": "0.5.10_tailwindcss@4.0.9",
     "npm:@tailwindcss/postcss@^4.0.9": "4.0.9",
     "npm:@tailwindcss/typography@~0.5.16": "0.5.16_tailwindcss@4.0.9",
-    "npm:@types/node@^20.17.22": "20.17.22",
+    "npm:@types/node@^22.13.8": "22.13.8",
     "npm:@types/pg@^8.11.11": "8.11.11",
     "npm:@types/react-dom@19": "19.0.4_@types+react@19.0.10",
     "npm:@types/react@19": "19.0.10",
@@ -238,16 +238,16 @@
         "tailwindcss"
       ]
     },
-    "@types/node@20.17.22": {
-      "integrity": "sha512-9RV2zST+0s3EhfrMZIhrz2bhuhBwxgkbHEwP2gtGWPjBzVQjifMzJ9exw7aDZhR1wbpj8zBrfp3bo8oJcGiUUw==",
-      "dependencies": [
-        "undici-types@6.19.8"
-      ]
-    },
     "@types/node@22.12.0": {
       "integrity": "sha512-Fll2FZ1riMjNmlmJOdAyY5pUbkftXslB5DgEzlIuNaiWhXd00FhWxVC/r4yV/4wBb9JfImTu+jiSvXTkJ7F/gA==",
       "dependencies": [
-        "undici-types@6.20.0"
+        "undici-types"
+      ]
+    },
+    "@types/node@22.13.8": {
+      "integrity": "sha512-G3EfaZS+iOGYWLLRCEAXdWK9my08oHNZ+FHluRiggIYJPOXzhOiDgpVCUHaUvyIC5/fj7C/p637jdzC666AOKQ==",
+      "dependencies": [
+        "undici-types"
       ]
     },
     "@types/pg@8.11.11": {
@@ -712,9 +712,6 @@
     "typescript@5.8.2": {
       "integrity": "sha512-aJn6wq13/afZp/jT9QZmwEjDqqvSGp1VT5GVg+f/t6/oVyrgXM6BY1h9BRh/O5p3PlUPAe+WuiEZOmb/49RqoQ=="
     },
-    "undici-types@6.19.8": {
-      "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
-    },
     "undici-types@6.20.0": {
       "integrity": "sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg=="
     },
@@ -732,7 +729,7 @@
         "npm:@tailwindcss/forms@~0.5.10",
         "npm:@tailwindcss/postcss@^4.0.9",
         "npm:@tailwindcss/typography@~0.5.16",
-        "npm:@types/node@^20.17.22",
+        "npm:@types/node@^22.13.8",
         "npm:@types/pg@^8.11.11",
         "npm:@types/react-dom@19",
         "npm:@types/react@19",
