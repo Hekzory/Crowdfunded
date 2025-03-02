@@ -1,0 +1,29 @@
+# Version control
+.git
+.gitignore
+
+# Node.js dependencies
+node_modules
+
+# Build outputs
+.next
+out
+dist
+
+# Cache and temporary files
+.cache
+.DS_Store
+*.log
+tmp
+coverage
+
+# Development and IDE files
+.vscode
+.idea
+*.swp
+*.swo
+
+# Docker related
+Dockerfile
+docker-compose.yml
+.dockerignore 
