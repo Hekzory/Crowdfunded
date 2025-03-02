@@ -23,10 +23,10 @@ export default function Navbar() {
               Projects
             </Link>
             <Link 
-              href="/start" 
+              href="/projects/new" 
               className="ml-2 bg-linear-to-r from-indigo-500 to-purple-600 text-white hover:from-indigo-600 hover:to-purple-700 px-4 py-2 rounded-md text-sm font-medium shadow-xs"
             >
-              Start a Project
+              Create Project
             </Link>
           </div>
         </div>

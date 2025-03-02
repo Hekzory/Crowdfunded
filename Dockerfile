@@ -3,13 +3,13 @@ FROM denoland/deno:alpine-2.2.2 AS base
 WORKDIR /app
 
 # Copy dependency files
-COPY package.json package-lock.json deno.json deno.lock ./
+COPY package.json deno.json deno.lock ./
 
 # Copy source files
 COPY . .
 
 # Build the Next.js application
-RUN deno install
+RUN deno install --allow-scripts
 RUN deno run build
 
 # Runtime image
@@ -34,4 +34,4 @@ ENV NODE_ENV production
 ENV PORT 3000
 
 # Start the app
-CMD ["deno", "run", "--allow-net", "start"] 
+CMD ["deno", "run", "--allow-net", "--allow-read", "start"] 

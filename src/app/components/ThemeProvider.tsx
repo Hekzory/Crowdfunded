@@ -10,7 +10,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    const root = window.document.documentElement;
+    const root = globalThis.document.documentElement;
     root.classList.remove('light');
     root.classList.add('dark');
   }, []);

@@ -16,7 +16,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
               <Link 
-                href="/start" 
+                href="/projects/new" 
                 className="bg-linear-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-medium text-lg shadow-xs"
               >
                 Start a Project

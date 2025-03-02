@@ -72,7 +72,7 @@ export default function About() {
         <div className="dark:bg-indigo-500 rounded-lg shadow-xl text-white p-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
           <p className="text-xl mb-6">Have questions? We&apos;d love to hear from you.</p>
-          <button className="bg-white/90 text-indigo-600 hover:bg-white/80 px-8 py-3 rounded-full font-semibold">
+          <button type="button" className="bg-white/90 text-indigo-600 hover:bg-white/80 px-8 py-3 rounded-full font-semibold">
             Contact Us
           </button>
         </div>

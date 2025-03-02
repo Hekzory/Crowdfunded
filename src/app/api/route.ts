@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   return NextResponse.json({
     name: 'Crowdfunded API',
     version: '0.1.0',
@@ -16,11 +16,6 @@ export async function GET(request: NextRequest) {
         description: 'Information about available routes in the application',
         method: 'GET'
       },
-      {
-        path: '/api/hello/[name]',
-        description: 'Greets the user with the provided name parameter',
-        method: 'GET'
-      }
     ]
   }, 
   { status: 200 });
