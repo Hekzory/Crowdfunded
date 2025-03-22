@@ -10,7 +10,8 @@ interface Project {
   goal_amount: number;
   current_amount: number;
   image_url: string;
-  creator_name: string;
+  user_id: number;
+  creator_name?: string; // This will be fetched from the users table
   status: string;
 }
 
@@ -86,7 +87,8 @@ export default function ProjectsList() {
           goalAmount={Number(project.goal_amount)}
           currentAmount={Number(project.current_amount)}
           imageUrl={project.image_url || ''}
-          creatorName={project.creator_name}
+          creatorName={project.creator_name || 'Unknown Creator'}
+          userId={project.user_id}
           status={project.status}
         />
       ))}

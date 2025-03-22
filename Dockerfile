@@ -1,6 +1,8 @@
-FROM denoland/deno:alpine-2.2.2 AS base
+FROM denoland/deno:alpine-2.2.5 AS base
 
 WORKDIR /app
+
+ENV DENO_NO_UPDATE_CHECK=1
 
 # Copy dependency files
 COPY package.json deno.json deno.lock ./
@@ -9,11 +11,11 @@ COPY package.json deno.json deno.lock ./
 COPY . .
 
 # Build the Next.js application
-RUN deno install --allow-scripts
+RUN deno install
 RUN deno run build
 
 # Runtime image
-FROM denoland/deno:alpine-2.2.2
+FROM denoland/deno:alpine-2.2.5
 
 WORKDIR /app
 

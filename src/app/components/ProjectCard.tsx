@@ -9,6 +9,7 @@ interface ProjectCardProps {
   currentAmount: number;
   imageUrl: string;
   creatorName: string;
+  userId: number;
   status?: string;
 }
 
@@ -20,6 +21,7 @@ export default function ProjectCard({
   currentAmount,
   imageUrl,
   creatorName,
+  userId,
   status = 'active', // Default to active if not provided for backward compatibility
 }: ProjectCardProps) {
   // Calculate progress percentage
@@ -100,7 +102,7 @@ export default function ProjectCard({
         
         <div className="flex items-center justify-between">
           <div className="text-sm text-gray-500 dark:text-gray-400">
-            By <span className="font-medium text-gray-700 dark:text-gray-300">{creatorName}</span>
+            By <Link href={`/users/${userId}`} className="font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">{creatorName}</Link>
           </div>
           <Link 
             href={`/projects/${id}`}

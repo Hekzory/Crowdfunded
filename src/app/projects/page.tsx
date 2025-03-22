@@ -1,13 +1,23 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ProjectsList from '@/app/components/ProjectsList';
+import { redirect } from 'next/navigation';
+import { getCurrentUser } from '@/app/lib/auth';
 
 export const metadata: Metadata = {
   title: 'Explore Projects | CrowdFunded',
   description: 'Discover innovative projects and ideas to fund on CrowdFunded',
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  // Check authentication
+  const user = await getCurrentUser();
+  
+  if (!user) {
+    // Redirect to login page if user is not authenticated
+    redirect('/login?redirectTo=' + encodeURIComponent('/projects'));
+  }
+  
   return (
     <div className="max-w-content py-12">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10">

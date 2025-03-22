@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import { ThemeProvider } from "@/app/components/ThemeProvider";
+import { AuthProvider } from "@/app/components/AuthProvider";
+import { initDatabase } from "@/app/lib/db";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,6 +23,9 @@ export const metadata: Metadata = {
   description: "A platform for crowdfunding innovative projects and ideas",
 };
 
+// Initialize database
+initDatabase().catch(console.error);
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,10 +37,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col`}
       >
         <ThemeProvider>
-          <Navbar />
-          <main className="flex-1">
-            {children}
-          </main>
+          <AuthProvider>
+            <Navbar />
+            <main className="flex-1">
+              {children}
+            </main>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

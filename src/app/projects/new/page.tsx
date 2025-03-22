@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -8,14 +8,39 @@ export default function NewProjectPage() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState<{ id: number, name: string } | null>(null);
   
   const [formData, setFormData] = useState({
     title: '',
     description: '',
     goal_amount: '',
-    creator_name: '',
     image_url: '',
   });
+
+  // Check authentication on component mount
+  useEffect(() => {
+    async function checkAuth() {
+      try {
+        const response = await fetch('/api/auth/me');
+        if (!response.ok) {
+          // Redirect to login if not authenticated
+          router.push('/login?redirectTo=' + encodeURIComponent('/projects/new'));
+          return;
+        }
+        
+        const userData = await response.json();
+        setUser(userData);
+      } catch (err) {
+        console.error('Authentication error:', err);
+        router.push('/login?redirectTo=' + encodeURIComponent('/projects/new'));
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    
+    checkAuth();
+  }, [router]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -32,7 +57,7 @@ export default function NewProjectPage() {
       setError(null);
       
       // Validate form
-      if (!formData.title || !formData.description || !formData.goal_amount || !formData.creator_name) {
+      if (!formData.title || !formData.description || !formData.goal_amount) {
         throw new Error('Please fill in all required fields');
       }
       
@@ -57,6 +82,11 @@ export default function NewProjectPage() {
       
       if (!response.ok) {
         const data = await response.json();
+        if (response.status === 401) {
+          // Redirect to login if authentication failed
+          router.push('/login?redirectTo=' + encodeURIComponent('/projects/new'));
+          return;
+        }
         throw new Error(data.error || 'Failed to create project');
       }
       
@@ -70,6 +100,18 @@ export default function NewProjectPage() {
       setIsSubmitting(false);
     }
   };
+
+  // Show loading state while checking authentication
+  if (isLoading) {
+    return (
+      <div className="max-w-content py-12">
+        <div className="text-center py-12">
+          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-indigo-600 border-r-transparent dark:border-indigo-400"></div>
+          <p className="mt-4 text-gray-600 dark:text-gray-300">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-content py-12">
@@ -150,22 +192,6 @@ export default function NewProjectPage() {
           </div>
           
           <div>
-            <label htmlFor="creator_name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Creator Name <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              id="creator_name"
-              name="creator_name"
-              value={formData.creator_name}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
-              placeholder="Enter your name or organization name"
-            />
-          </div>
-          
-          <div>
             <label htmlFor="image_url" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Image URL
             </label>
@@ -179,6 +205,17 @@ export default function NewProjectPage() {
               placeholder="Enter a URL for your project image (optional)"
             />
           </div>
+          
+          {user && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                Creator
+              </label>
+              <div className="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                {user.name}
+              </div>
+            </div>
+          )}
         </div>
         
         <div className="mt-8 flex justify-end">

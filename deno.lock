@@ -7,10 +7,10 @@
     "npm:@tailwindcss/typography@~0.5.16": "0.5.16_tailwindcss@4.0.15",
     "npm:@types/node@^22.13.11": "22.13.11",
     "npm:@types/pg@^8.11.11": "8.11.11",
-    "npm:@types/react-dom@19": "19.0.4_@types+react@19.0.10",
-    "npm:@types/react@19": "19.0.10",
+    "npm:@types/react-dom@19": "19.0.4_@types+react@19.0.12",
     "npm:@types/react@^19.0.12": "19.0.12",
     "npm:critters@^0.0.25": "0.0.25",
+    "npm:jose@^6.0.10": "6.0.10",
     "npm:next@^15.2.3": "15.2.3_react@19.0.0_react-dom@19.0.0__react@19.0.0",
     "npm:pg@^8.14.1": "8.14.1",
     "npm:react-dom@19": "19.0.0_react@19.0.0",
@@ -255,20 +255,14 @@
       "integrity": "sha512-kGT1qKM8wJQ5qlawUrEkXgvMSXoV213KfMGXcwfDwUIfUHXqXYXOfS1nE1LINRJVVVx5wCm70XnFlMHaIcQAfw==",
       "dependencies": [
         "@types/node@22.12.0",
-        "pg-protocol@1.7.1",
+        "pg-protocol",
         "pg-types@4.0.2"
       ]
     },
-    "@types/react-dom@19.0.4_@types+react@19.0.10": {
+    "@types/react-dom@19.0.4_@types+react@19.0.12": {
       "integrity": "sha512-4fSQ8vWFkg+TGhePfUzVmat3eC14TXYSsiiDSLI0dVLsrm9gZFABjPy/Qu6TKgl1tq1Bu1yDsuQgY3A3DOjCcg==",
       "dependencies": [
-        "@types/react@19.0.10"
-      ]
-    },
-    "@types/react@19.0.10": {
-      "integrity": "sha512-JuRQ9KXLEjaUNjTWpzuR231Z2WpIwczOkBEIvbHNCzQefFIT0L8IqE6NV6ULLyC1SI/i234JnDoMkfg+RjQj2g==",
-      "dependencies": [
-        "csstype"
+        "@types/react"
       ]
     },
     "@types/react@19.0.12": {
@@ -418,6 +412,9 @@
     "jiti@2.4.2": {
       "integrity": "sha512-rg9zJN+G4n2nfJl5MW3BMygZX56zKPNVEYYqq7adpmMh4Jn2QNEwhvQlFy6jPVdcod7txZtKHWnyZiA3a0zP7A=="
     },
+    "jose@6.0.10": {
+      "integrity": "sha512-skIAxZqcMkOrSwjJvplIPYrlXGpxTPnro2/QWTDCxAdWQrSTV5/KqspMWmi5WAx5+ULswASJiZ0a+1B/Lxt9cw=="
+    },
     "lightningcss-darwin-arm64@1.29.2": {
       "integrity": "sha512-cK/eMabSViKn/PG8U/a7aCorpeKLMlK0bQeNHmdb7qUnBkNPnL+oV5DjJUo0kqWsJUapZsM4jCfYItbqBDvlcA=="
     },
@@ -476,8 +473,8 @@
     "mini-svg-data-uri@1.4.4": {
       "integrity": "sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg=="
     },
-    "nanoid@3.3.8": {
-      "integrity": "sha512-WNLf5Sd8oZxOm+TzppcYk8gVOgP+l58xNy58D0nbUnOxOWRWvlcCV4kUF7ltmI6PsrLl/BgKEyS4mqsGChFN0w=="
+    "nanoid@3.3.11": {
+      "integrity": "sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w=="
     },
     "next@15.2.3_react@19.0.0_react-dom@19.0.0__react@19.0.0": {
       "integrity": "sha512-x6eDkZxk2rPpu46E1ZVUWIBhYCLszmUY6fvHBFcbzJ9dD+qRX6vcHusaqqDlnY+VngKzKbAiG2iRCkPbmi8f7w==",
@@ -529,9 +526,6 @@
         "pg"
       ]
     },
-    "pg-protocol@1.7.1": {
-      "integrity": "sha512-gjTHWGYWsEgy9MsY0Gp6ZJxV24IjDqdpTW7Eh0x+WfJLFsm/TJx1MzL6T0D88mBvkpxotCQ6TwW6N+Kko7lhgQ=="
-    },
     "pg-protocol@1.8.0": {
       "integrity": "sha512-jvuYlEkL03NRvOoyoRktBK7+qU5kOvlAwvmrH8sr3wbLrOdVWsRxQfz8mMy9sZFsqJ1hEWNfdWKI4SAmoL+j7g=="
     },
@@ -550,7 +544,7 @@
       "dependencies": [
         "pg-int8",
         "pg-numeric",
-        "postgres-array@3.0.2",
+        "postgres-array@3.0.4",
         "postgres-bytea@3.0.0",
         "postgres-date@2.1.0",
         "postgres-interval@3.0.0",
@@ -563,7 +557,7 @@
         "pg-cloudflare",
         "pg-connection-string",
         "pg-pool",
-        "pg-protocol@1.8.0",
+        "pg-protocol",
         "pg-types@2.2.0",
         "pgpass"
       ]
@@ -606,8 +600,8 @@
     "postgres-array@2.0.0": {
       "integrity": "sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA=="
     },
-    "postgres-array@3.0.2": {
-      "integrity": "sha512-6faShkdFugNQCLwucjPcY5ARoW1SlbnrZjmGl0IrrqewpvxvhSLHimCVzqeuULCbG0fQv7Dtk1yDbG3xv7Veog=="
+    "postgres-array@3.0.4": {
+      "integrity": "sha512-nAUSGfSDGOaOAEGwqsRY27GPOea7CNipJPOA7lPbdEpx5Kg3qzdP0AaWC5MlhTWV9s4hFX39nomVZ+C4tnGOJQ=="
     },
     "postgres-bytea@1.0.0": {
       "integrity": "sha512-xy3pmLuQqRBZBXDULy7KbaitYqLcmxigw14Q5sj8QBVLqEwXfeybIKVWiqAXTlcvdvb0+xkOtDbfQMOf4lST1w=="
@@ -741,6 +735,7 @@
         "npm:@types/react-dom@19",
         "npm:@types/react@^19.0.12",
         "npm:critters@^0.0.25",
+        "npm:jose@^6.0.10",
         "npm:next@^15.2.3",
         "npm:pg@^8.14.1",
         "npm:react-dom@19",

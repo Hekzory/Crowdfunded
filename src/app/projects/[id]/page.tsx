@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { query } from '@/app/lib/db';
 import StartProjectButton from '@/app/components/StartProjectButton';
+import { getCurrentUser } from '@/app/lib/auth';
 
 interface ProjectPageProps {
   params: {
@@ -12,7 +13,17 @@ interface ProjectPageProps {
 
 async function getProject(id: string) {
   try {
-    const result = await query('SELECT * FROM projects WHERE id = $1', [id]);
+    const result = await query(`
+      SELECT 
+        p.*,
+        u.name as creator_name
+      FROM 
+        projects p
+      JOIN 
+        users u ON p.user_id = u.id
+      WHERE 
+        p.id = $1
+    `, [id]);
     
     if (result.rows.length === 0) {
       return null;
@@ -42,6 +53,14 @@ export async function generateMetadata({ params }: ProjectPageProps) {
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
+  // Check authentication
+  const user = await getCurrentUser();
+  
+  if (!user) {
+    // Redirect to login page if user is not authenticated
+    redirect('/login?redirectTo=' + encodeURIComponent(`/projects/${params.id}`));
+  }
+  
   const project = await getProject(params.id);
   
   if (!project) {
@@ -147,7 +166,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div className="space-y-4">
               <div>
                 <h3 className="font-medium text-gray-900 dark:text-white">Creator</h3>
-                <p className="text-gray-600 dark:text-gray-300">{project.creator_name}</p>
+                <p className="text-gray-600 dark:text-gray-300">
+                  <Link href={`/users/${project.user_id}`} className="hover:text-indigo-600 dark:hover:text-indigo-400">
+                    {project.creator_name}
+                  </Link>
+                </p>
               </div>
               <div>
                 <h3 className="font-medium text-gray-900 dark:text-white">Created</h3>

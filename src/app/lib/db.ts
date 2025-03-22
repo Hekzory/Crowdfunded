@@ -22,6 +22,17 @@ export async function query(text: string, params?: any[]) {
 
 // Function to create the projects table if it doesn't exist
 export async function initDatabase() {
+  const createUsersTable = `
+    CREATE TABLE IF NOT EXISTS users (
+      id SERIAL PRIMARY KEY,
+      email VARCHAR(255) NOT NULL UNIQUE,
+      password_hash VARCHAR(255) NOT NULL,
+      name VARCHAR(255) NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+  `;
+
   const createProjectsTable = `
     CREATE TABLE IF NOT EXISTS projects (
       id SERIAL PRIMARY KEY,
@@ -30,7 +41,7 @@ export async function initDatabase() {
       goal_amount DECIMAL(12, 2) NOT NULL,
       current_amount DECIMAL(12, 2) DEFAULT 0.00,
       image_url TEXT,
-      creator_name VARCHAR(255) NOT NULL,
+      user_id INTEGER NOT NULL,
       status VARCHAR(50) DEFAULT 'draft' NOT NULL,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -38,6 +49,7 @@ export async function initDatabase() {
   `;
 
   try {
+    await query(createUsersTable);
     await query(createProjectsTable);
     console.log('Database initialized successfully');
   } catch (error) {
