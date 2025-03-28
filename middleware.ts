@@ -17,6 +17,8 @@ const publicPaths = [
   '/api/auth/login',
   '/api/auth/register',
   '/api/auth/logout',
+  '/api/auth/google',
+  '/api/auth/google/callback',
 ];
 
 export async function middleware(request: NextRequest) {

@@ -16,7 +16,7 @@ export async function GET() {
     
     // Get user data from database
     const result = await query(
-      'SELECT id, email, name FROM users WHERE id = $1',
+      'SELECT id, email, name, provider, profile_picture FROM users WHERE id = $1',
       [jwtPayload.userId]
     );
     
