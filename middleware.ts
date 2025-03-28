@@ -6,6 +6,7 @@ import { verifyToken } from '@/app/lib/auth';
 const protectedPaths = [
   '/projects',
   '/projects/new',
+  '/admin',
 ];
 
 // Paths that are public

@@ -36,6 +36,17 @@ export default function Navbar() {
                     >
                       Create Project
                     </Link>
+                    
+                    {/* Show Admin link only if user name is "admin" */}
+                    {user.name === 'admin' && (
+                      <Link 
+                        href="/admin" 
+                        className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      >
+                        Admin Panel
+                      </Link>
+                    )}
+                    
                     <div className="text-gray-600 dark:text-gray-300 px-3 py-2 rounded-md text-sm font-medium">
                       {user.name}
                     </div>
