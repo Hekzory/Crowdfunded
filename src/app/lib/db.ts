@@ -20,7 +20,7 @@ export async function query(text: string, params?: any[]) {
   }
 }
 
-// Function to create the projects table if it doesn't exist
+// Function to create the tables if they don't exist
 export async function initDatabase() {
   const createUsersTable = `
     CREATE TABLE IF NOT EXISTS users (
@@ -51,9 +51,41 @@ export async function initDatabase() {
     );
   `;
 
+  const createContributionsTable = `
+    CREATE TABLE IF NOT EXISTS contributions (
+      id SERIAL PRIMARY KEY,
+      user_id INTEGER NOT NULL,
+      project_id INTEGER NOT NULL,
+      amount DECIMAL(12, 2) NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (user_id) REFERENCES users(id),
+      FOREIGN KEY (project_id) REFERENCES projects(id)
+    );
+  `;
+
+  const createSystemSettingsTable = `
+    CREATE TABLE IF NOT EXISTS system_settings (
+      id SERIAL PRIMARY KEY,
+      key VARCHAR(255) NOT NULL UNIQUE,
+      value TEXT NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+  `;
+
+  // Insert default system settings if they don't exist
+  const insertDefaultSettings = `
+    INSERT INTO system_settings (key, value)
+    VALUES ('test_payment_enabled', 'true')
+    ON CONFLICT (key) DO NOTHING;
+  `;
+
   try {
     await query(createUsersTable);
     await query(createProjectsTable);
+    await query(createContributionsTable);
+    await query(createSystemSettingsTable);
+    await query(insertDefaultSettings);
     console.log('Database initialized successfully');
   } catch (error) {
     console.error('Failed to initialize database', error);

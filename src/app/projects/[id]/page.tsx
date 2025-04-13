@@ -4,6 +4,7 @@ import { notFound, redirect } from 'next/navigation';
 import { query } from '@/app/lib/db';
 import StartProjectButton from '@/app/components/StartProjectButton';
 import { getCurrentUser } from '@/app/lib/auth';
+import ContributeFormWrapper from './ContributeFormWrapper';
 
 interface ProjectPageProps {
   params: {
@@ -33,6 +34,21 @@ async function getProject(id: string) {
   } catch (error) {
     console.error('Error fetching project:', error);
     throw new Error('Failed to fetch project');
+  }
+}
+
+// Check if test payment system is enabled
+async function isPaymentEnabled() {
+  try {
+    const result = await query(
+      'SELECT value FROM system_settings WHERE key = $1',
+      ['test_payment_enabled']
+    );
+    
+    return result.rows.length > 0 && result.rows[0].value === 'true';
+  } catch (error) {
+    console.error('Error checking payment system:', error);
+    return false;
   }
 }
 
@@ -67,6 +83,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
   
+  // Check if payment system is enabled
+  const paymentEnabled = await isPaymentEnabled();
+  
   // Calculate progress percentage
   const progress = Math.min(Math.round((project.current_amount / project.goal_amount) * 100), 100);
   
@@ -96,12 +115,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         return { text: 'Draft', color: 'bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-300' };
       case 'active':
         return { text: 'Active', color: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400' };
+      case 'completed':
+        return { text: 'Completed', color: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400' };
+      case 'rejected':
+        return { text: 'Rejected', color: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400' };
       default:
         return { text: status.charAt(0).toUpperCase() + status.slice(1), color: 'bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-300' };
     }
   };
 
   const statusDisplay = getStatusDisplay(project.status);
+
+  // Check if the current user is the project creator
+  const isCreator = user?.userId === project.user_id;
+
+  // Check if the current user can contribute (not creator, project is active)
+  const canContribute = !isCreator && project.status === 'active' && paymentEnabled;
 
   return (
     <div className="max-w-content py-12">
@@ -163,7 +192,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
             </div>
             
-            <div className="space-y-4">
+            <div className="space-y-4 mb-6">
               <div>
                 <h3 className="font-medium text-gray-900 dark:text-white">Creator</h3>
                 <p className="text-gray-600 dark:text-gray-300">
@@ -178,8 +207,34 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
             </div>
             
-            {/* Start Project button */}
-            <StartProjectButton projectId={project.id} currentStatus={project.status} />
+            {/* Show Start Project button for project creator if project is in draft */}
+            {isCreator && project.status === 'draft' && (
+              <StartProjectButton projectId={project.id} currentStatus={project.status} />
+            )}
+            
+            {/* Show Contribute Form for active projects if user is not the creator */}
+            {canContribute && (
+              <div className="mt-6">
+                <ContributeFormWrapper 
+                  projectId={project.id} 
+                  projectTitle={project.title} 
+                />
+              </div>
+            )}
+            
+            {/* Payment system disabled message */}
+            {project.status === 'active' && !paymentEnabled && (
+              <div className="mt-6 p-3 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 text-yellow-700 dark:text-yellow-300 rounded text-sm">
+                The payment system is currently disabled. Please try again later.
+              </div>
+            )}
+            
+            {/* Project not accepting contributions message */}
+            {project.status !== 'active' && project.status !== 'draft' && (
+              <div className="mt-6 p-3 bg-gray-100 dark:bg-gray-700 rounded text-sm text-gray-700 dark:text-gray-300">
+                This project is not currently accepting contributions.
+              </div>
+            )}
           </div>
         </div>
       </div>
