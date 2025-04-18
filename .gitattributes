@@ -1,0 +1,106 @@
+# Auto detect text files and perform LF normalization
+* text=auto eol=lf
+
+# Git specific files
+*.gitattributes text linguist-language=gitattributes linguist-detectable=true linguist-documentation=false eol=lf
+.gitignore      text eol=lf
+
+# Markdown
+*.md            text diff=markdown eol=lf linguist-detectable=true
+*.mdx           text diff=markdown eol=lf
+
+# Common web/dev text files
+*.ts             text eol=lf
+*.tsx            text eol=lf
+*.js             text eol=lf
+*.jsx            text eol=lf
+*.mjs            text eol=lf
+*.css            text eol=lf
+*.html           text eol=lf
+*.svg            text eol=lf
+*.dockerignore   text eol=lf
+Dockerfile       text eol=lf
+Makefile         text eol=lf
+LICENSE          text eol=lf
+*.sql            text eol=lf
+*.txt            text eol=lf
+*.adoc           text eol=lf
+*.textile        text eol=lf
+*.mustache       text eol=lf
+
+# Scripts (default to LF)
+*.bash           text eol=lf
+*.fish           text eol=lf
+*.ksh            text eol=lf
+*.sh             text eol=lf
+*.zsh            text eol=lf
+# Windows scripts (use CRLF)
+*.bat            text eol=crlf
+*.cmd            text eol=crlf
+*.ps1            text eol=crlf
+
+# Serialisation/Data formats
+*.json           text eol=lf
+*.toml           text eol=lf
+*.xml            text eol=lf
+*.yaml           text eol=lf
+*.yml            text eol=lf
+*.csv            text eol=crlf # Often requires CRLF for compatibility
+*.tab            text eol=lf
+*.tsv            text eol=lf
+*.bibtex         text diff=bibtex eol=lf
+*.tex            text diff=tex eol=lf
+
+# Lock files (generated)
+deno.lock           text eol=lf linguist-generated=true
+package.json        text eol=lf # Not marking package.json as generated
+package-lock.json   text eol=lf linguist-generated=true
+yarn.lock           text eol=lf linguist-generated=true
+
+# Binary files (Archives, Graphics, Fonts, etc.)
+*.7z       binary
+*.bz       binary
+*.bz2      binary
+*.bzip2    binary
+*.gz       binary
+*.lz       binary
+*.lzma     binary
+*.rar      binary
+*.tar      binary
+*.taz      binary
+*.tbz      binary
+*.tbz2     binary
+*.tgz      binary
+*.tlz      binary
+*.txz      binary
+*.xz       binary
+*.Z        binary
+*.zip      binary
+*.zst      binary
+*.png      binary
+*.jpg      binary
+*.jpeg     binary
+*.gif      binary
+*.tif      binary
+*.tiff     binary
+*.ico      binary
+*.webp     binary
+*.woff     binary
+*.woff2    binary
+*.ttf      binary
+*.otf      binary
+*.eot      binary
+*.wasm     binary
+
+# Documents (treat as text for diffing where possible)
+*.doc      diff=astextplain binary
+*.DOC      diff=astextplain binary
+*.docx     diff=astextplain binary
+*.DOCX     diff=astextplain binary
+*.dot      diff=astextplain binary
+*.DOT      diff=astextplain binary
+*.pdf      diff=astextplain binary
+*.PDF      diff=astextplain binary
+*.rtf      diff=astextplain binary
+*.RTF      diff=astextplain binary
+*.epub     diff=astextplain binary
