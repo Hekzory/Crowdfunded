@@ -45,7 +45,7 @@ LICENSE          text eol=lf
 *.xml            text eol=lf
 *.yaml           text eol=lf
 *.yml            text eol=lf
-*.csv            text eol=crlf # Often requires CRLF for compatibility
+*.csv            text eol=crlf
 *.tab            text eol=lf
 *.tsv            text eol=lf
 *.bibtex         text diff=bibtex eol=lf
@@ -53,7 +53,7 @@ LICENSE          text eol=lf
 
 # Lock files (generated)
 deno.lock           text eol=lf linguist-generated=true
-package.json        text eol=lf # Not marking package.json as generated
+package.json        text eol=lf
 package-lock.json   text eol=lf linguist-generated=true
 yarn.lock           text eol=lf linguist-generated=true
 
