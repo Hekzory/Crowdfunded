@@ -1,4 +1,4 @@
-FROM denoland/deno:alpine-2.2.10 AS base
+FROM denoland/deno:alpine-2.2.11 AS base
 
 WORKDIR /app
 
@@ -15,7 +15,7 @@ RUN deno install
 RUN deno run build
 
 # Runtime image
-FROM denoland/deno:alpine-2.2.10
+FROM denoland/deno:alpine-2.2.11
 
 WORKDIR /app
 
@@ -36,4 +36,4 @@ ENV NODE_ENV production
 ENV PORT 3000
 
 # Start the app
-CMD ["deno", "run", "--allow-net", "--allow-read", "start"] 
+CMD ["deno", "run", "--allow-net", "--allow-read", "start"]
