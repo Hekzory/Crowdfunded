@@ -1,0 +1,18 @@
+FROM denoland/deno:alpine-2.2.12
+
+WORKDIR /app
+
+ENV DENO_NO_UPDATE_CHECK=1
+ENV NODE_ENV=test
+
+# Copy dependency files
+COPY package.json deno.json deno.lock ./
+
+# Copy source files and tests
+COPY . .
+
+# Install dependencies
+RUN deno install
+
+# The command to run tests will be specified in docker-compose.test.yml
+CMD ["deno", "test", "--allow-read", "--allow-env", "--allow-net"] 

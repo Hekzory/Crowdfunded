@@ -1,0 +1,39 @@
+services:
+  app_test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    environment:
+      - NODE_ENV=test
+      - DATABASE_URL=postgres://postgres:postgres@db_test:5432/crowdfunded_test
+    env_file:
+      - .env.test
+    depends_on:
+      db_test:
+        condition: service_healthy
+    networks:
+      - crowdfunded-test-network
+    command: deno test --allow-read --allow-env --allow-net
+
+  db_test:
+    image: postgres:17.4-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=crowdfunded_test
+    volumes:
+      - postgres-test-data:/var/lib/postgresql/data
+    networks:
+      - crowdfunded-test-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 1s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  postgres-test-data:
+
+networks:
+  crowdfunded-test-network:
+    driver: bridge 

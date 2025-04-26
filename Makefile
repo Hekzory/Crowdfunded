@@ -1,5 +1,5 @@
 .PHONY: 
-		build up upd down restart reup reupd clean
+		build up upd down restart reup reupd clean test test-up test-down test-db-init
 
 build:
 		COMPOSE_BAKE=true docker-compose build
@@ -30,3 +30,30 @@ reupd:
 clean:
 		COMPOSE_BAKE=true docker-compose down
 		docker system prune -a
+
+# Test commands
+test-build:
+		docker-compose -f docker-compose.test.yml build
+
+test-up:
+		docker-compose -f docker-compose.test.yml up -d db_test
+		sleep 2 # Give the database time to initialize
+
+test-down:
+		docker-compose -f docker-compose.test.yml down
+
+test-db-init:
+		docker-compose -f docker-compose.test.yml run --rm app_test deno run --allow-net src/scripts/init-test-db.ts
+
+# Main test command - builds, sets up DB, runs tests, tears down
+test: test-build test-up
+		docker-compose -f docker-compose.test.yml run --rm app_test
+		$(MAKE) test-down
+
+# Run tests and keep containers running
+test-dev: test-build test-up
+		docker-compose -f docker-compose.test.yml run --rm app_test
+		
+# Run watch mode for tests during development
+test-watch: test-build test-up
+		docker-compose -f docker-compose.test.yml run --rm app_test deno test --watch --allow-read --allow-env --allow-net

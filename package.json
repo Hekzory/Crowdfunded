@@ -6,7 +6,8 @@
         "dev": "next dev --turbopack",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "test": "deno test --allow-read --allow-env"
     },
     "dependencies": {
         "jose": "^6.0.10",
