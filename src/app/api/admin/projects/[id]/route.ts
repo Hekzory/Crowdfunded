@@ -52,6 +52,12 @@ export async function DELETE(
       );
     }
     
+    // Delete associated contributions first
+    await query(
+      'DELETE FROM contributions WHERE project_id = $1',
+      [projectId]
+    );
+    
     // Delete the project
     await query(
       'DELETE FROM projects WHERE id = $1',
