@@ -5,7 +5,7 @@
     "npm:@tailwindcss/forms@~0.5.10": "0.5.10_tailwindcss@4.1.4",
     "npm:@tailwindcss/postcss@^4.1.4": "4.1.4",
     "npm:@tailwindcss/typography@~0.5.16": "0.5.16_tailwindcss@4.1.4",
-    "npm:@types/node@^22.15.2": "22.15.2",
+    "npm:@types/node@^22.15.3": "22.15.3",
     "npm:@types/pg@^8.11.14": "8.11.14",
     "npm:@types/react-dom@^19.1.2": "19.1.2_@types+react@19.1.1",
     "npm:@types/react@^19.1.1": "19.1.1",
@@ -288,8 +288,8 @@
         "undici-types@6.20.0"
       ]
     },
-    "@types/node@22.15.2": {
-      "integrity": "sha512-uKXqKN9beGoMdBfcaTY1ecwz6ctxuJAcUlwE55938g0ZJ8lRxwAZqRz2AJ4pzpt5dHdTPMB863UZ0ESiFUcP7A==",
+    "@types/node@22.15.3": {
+      "integrity": "sha512-lX7HFZeHf4QG/J7tBZqrCAXwz9J5RD56Y6MpP0eJkka8p+K0RY/yBTW7CYFJ4VGCclxqOLKmiGP5juQc6MKgcw==",
       "dependencies": [
         "undici-types@6.21.0"
       ]
@@ -818,7 +818,7 @@
         "npm:@tailwindcss/forms@~0.5.10",
         "npm:@tailwindcss/postcss@^4.1.4",
         "npm:@tailwindcss/typography@~0.5.16",
-        "npm:@types/node@^22.15.2",
+        "npm:@types/node@^22.15.3",
         "npm:@types/pg@^8.11.14",
         "npm:@types/react-dom@^19.1.2",
         "npm:@types/react@^19.1.2",
