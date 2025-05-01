@@ -1,4 +1,4 @@
-FROM denoland/deno:alpine-2.2.12 AS base
+FROM denoland/deno:alpine-2.3.1 AS base
 
 WORKDIR /app
 
@@ -15,7 +15,7 @@ RUN deno install
 RUN deno run build
 
 # Runtime image
-FROM denoland/deno:alpine-2.2.12
+FROM denoland/deno:alpine-2.3.1
 
 WORKDIR /app
 

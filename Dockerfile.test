@@ -1,4 +1,4 @@
-FROM denoland/deno:alpine-2.2.12
+FROM denoland/deno:alpine-2.3.1
 
 WORKDIR /app
 
@@ -15,4 +15,4 @@ COPY . .
 RUN deno install
 
 # The command to run tests will be specified in docker-compose.test.yml
-CMD ["deno", "test", "--allow-read", "--allow-env", "--allow-net"] 
+CMD ["deno", "test", "--allow-read", "--allow-env", "--allow-net"]
