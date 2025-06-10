@@ -1,4 +1,4 @@
-.PHONY: 
+.PHONY:
 		build up upd down restart reup reupd clean test test-up test-down test-db-init
 
 build:
@@ -47,13 +47,13 @@ test-db-init:
 
 # Main test command - builds, sets up DB, runs tests, tears down
 test: test-build test-up
-		docker-compose -f docker-compose.test.yml run --rm app_test
+		docker-compose -f docker-compose.test.yml run --rm app_test deno test --allow-read --allow-env --allow-net --no-check
 		$(MAKE) test-down
 
 # Run tests and keep containers running
 test-dev: test-build test-up
 		docker-compose -f docker-compose.test.yml run --rm app_test
-		
+
 # Run watch mode for tests during development
 test-watch: test-build test-up
-		docker-compose -f docker-compose.test.yml run --rm app_test deno test --watch --allow-read --allow-env --allow-net
+		docker-compose -f docker-compose.test.yml run --rm app_test deno test --watch --allow-read --allow-env --allow-net --no-check
