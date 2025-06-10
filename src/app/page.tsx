@@ -9,20 +9,20 @@ export default function Home() {
         <div className="max-w-content relative">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-linear-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
-              Fund Your Dreams, Build the Future
+              Fund Your Dreams & Build the Future
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-600 dark:text-gray-300">
               Join our community of innovators and backers to bring creative projects to life.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
-              <Link 
-                href="/projects/new" 
+              <Link
+                href="/projects/new"
                 className="bg-linear-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-medium text-lg shadow-xs"
               >
                 Start a Project
               </Link>
-              <Link 
-                href="/projects" 
+              <Link
+                href="/projects"
                 className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 px-8 py-3 rounded-lg font-medium text-lg shadow-xs"
               >
                 Explore Projects

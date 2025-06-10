@@ -1,18 +1,17 @@
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: copysiper/crowdfunded:latest
+    container_name: crowdfunded-app
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
       - DATABASE_URL=postgres://postgres:postgres@db:5432/crowdfunded
-    env_file:
-      - .env.local
     depends_on:
       db:
         condition: service_healthy
+    env_file:
+      - .env.local
     restart: unless-stopped
     networks:
       - crowdfunded-network
